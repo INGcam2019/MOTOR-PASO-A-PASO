@@ -37,7 +37,8 @@ Byte CONST antih_8[8]= {0b1001,
 
 VOID MAIN()
 {
-   lcd_init();
+   LCD_INIT();
+   LCD_PUTC("\f");
    INT cont;
    SET_TRIS_B(0B000000);    //Configura el puerto B
    PORTB=0;
@@ -47,8 +48,7 @@ VOID MAIN()
    if(BIT_TEST(SW)){
       if(BIT_TEST(DIP1)){
          while(cont<8){
-             // LCD_GOTOXY(5,1);
-            //  LCD_PUTC("Control");
+               
             PORTB=horario_8[cont];
             delay_ms(500);
             cont++;

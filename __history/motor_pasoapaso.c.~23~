@@ -1,0 +1,49 @@
+#INCLUDE<16f887.h>
+#USE DELAY(CLOCK=4000000)
+#FUSES XT,PROTECT,NOWDT,NOBROWNOUT,PUT,NOLVP
+#DEFINE SW PORTC,0
+#DEFINE DIP1 PORTC,1
+#DEFINE DIP2 PORTC,2
+#BYTE PORTB= 6
+#BYTE PORTC=7
+Byte CONST horario_4[4]= {0b1000,
+                          0b0100,
+                          0b0010,
+                          0b0001};//configuracion para 4 tiempos
+
+Byte CONST horario_8[8]= {0b1000,
+                          0b1100,
+                          0b0100,
+                          0b0110,
+                          0b0010,
+                          0b0011,
+                          0b0001,
+                          0b1001};//configuracion para 4 tiempos
+
+
+VOID MAIN()
+{
+   INT cont;
+   SET_TRIS_B(0B000000);    //Configura el puerto B
+   PORTB=0;
+   while(TRUE){
+   //motor 8 pasos
+      if((DIP1==0 & DIP2==1)){
+         cont=0;   
+         PORTB=horario_8[cont];
+         delay_ms(500);
+         cont++;
+      }
+       if((DIP1==1 & DIP2==0)){
+         cont=0;
+         PORTB=horario_4[cont];
+         delay_ms(500);
+         cont++;
+    
+    
+   }
+   
+   
+}
+}
+

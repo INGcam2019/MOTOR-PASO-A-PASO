@@ -47,8 +47,8 @@ VOID MAIN()
    if(BIT_TEST(SW)){
       if(BIT_TEST(DIP1)){
          while(cont<8){
-             // LCD_GOTOXY(5,1);
-            //  LCD_PUTC("Control");
+              LCD_GOTOXY(5,1);
+              LCD_PUTC("Control");
             PORTB=horario_8[cont];
             delay_ms(500);
             cont++;

@@ -1,5 +1,5 @@
 #INCLUDE<16f887.h>
-#INCLUDE<lcd.c>
+//#INCLUDE<lcd.c>
 #USE DELAY(CLOCK=4000000)
 #FUSES XT,PROTECT,NOWDT,NOBROWNOUT,PUT,NOLVP
 #DEFINE SW PORTC,0
@@ -37,7 +37,7 @@ Byte CONST antih_8[8]= {0b1001,
 
 VOID MAIN()
 {
-   lcd_init();
+   //lcd_init();
    INT cont;
    SET_TRIS_B(0B000000);    //Configura el puerto B
    PORTB=0;

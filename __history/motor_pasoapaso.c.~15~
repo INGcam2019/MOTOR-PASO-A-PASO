@@ -1,0 +1,50 @@
+#INCLUDE<16f887.h>
+#USE DELAY(CLOCK=4000000)
+#FUSES XT,PROTECT,NOWDT,NOBROWNOUT,PUT,NOLVP
+#DEFINE SW PORTC,0
+#BYTE PORTB= 6
+#BYTE PORTC=7
+Byte CONST horario_4[4]= {0b1000,
+                          0b0100,
+                          0b0010,
+                          0b0001};//configuracion para 4 tiempos
+
+Byte CONST horario_8[8]= {0b1000,
+                          0b1100,
+                          0b0100,
+                          0b0110,
+                          0b0010,
+                          0b0011,
+                          0b0001,
+                          0b1001};//configuracion para 4 tiempos
+
+
+VOID MAIN()
+{
+   INT cont,cont1;
+   SET_TRIS_B(0B000000);    //Configura el puerto B
+   PORTB=0;
+   cont=0;
+   cont1=0;
+   while(TRUE){
+   horario4();
+   /*
+      PORTB=horario_4[cont];
+      delay_ms(500);
+      cont++;
+      if(cont>3){
+      cont=0;};*/
+   if(BIT_TEST(SW)){
+      PORTB=horario_8[cont1];
+      delay_ms(500);
+      cont1++;
+      if(cont1>7){
+         cont1=0;};
+    
+    
+   
+   }
+   
+}
+}
+
